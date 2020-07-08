@@ -6,4 +6,5 @@ declare module 'less-loader';
 declare module 'babel-loader';
 declare module '@babel/preset-env';
 declare module '@vue/babel-preset-jsx';
+declare module '@vue/@babel/core';
 declare module 'vue-loader/lib/plugin';

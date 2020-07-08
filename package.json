@@ -1,39 +1,108 @@
 {
-  "name": "@bit/wiin.apps.bundlers.vue",
-  "version": "2.6.10",
-  "homepage": "https://bit.dev/bit/envs/bundlers/vue",
-  "main": "index.js",
+  "name": "vue-jsx-compiler",
+  "version": "2.6.21",
+  "homepage": "https://bit.dev/wiin/apps/bundlers/vue",
+  "main": "dist/vue-bundler/index.js",
+  "componentId": {
+    "scope": "wiin.apps",
+    "name": "bundlers/vue",
+    "version": "2.6.21"
+  },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.6.0",
-    "@types/memory-fs": "^0.3.2",
-    "@types/webpack": "^4.39.1",
-    "@types/webpack-node-externals": "^1.6.3",
+    "@babel/preset-env": "7.6.0",
     "@vue/babel-preset-jsx": "^1.1.2",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^0.28.10",
+    "babel-loader": "8.0.6",
+    "css-loader": "0.28.11",
+    "less": "^3.11.3",
     "less-loader": "^5.0.0",
-    "memory-fs": "^0.4.1",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.23.1",
-    "ts-loader": "^6.2.0",
-    "typescript": "^3.6.3",
-    "uglifyjs-webpack-plugin": "^1.2.0",
-    "vinyl": "^2.1.0",
-    "vue": "^2.6.10",
-    "vue-loader": "^15.7.1",
-    "vue-style-loader": "^4.0.2",
-    "vue-template-compiler": "^2.5.13",
-    "webpack": "^4.34.0",
-    "webpack-node-externals": "^1.7.2"
+    "memory-fs": "0.4.1",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^6.0.7",
+    "ts-loader": "6.2.0",
+    "typescript": "3.6.3",
+    "vinyl": "^2.2.0",
+    "vue": "2.6.10",
+    "vue-loader": "15.7.1",
+    "vue-style-loader": "4.1.2",
+    "vue-template-compiler": "2.6.10",
+    "webpack": "4.39.3",
+    "webpack-node-externals": "1.7.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/vinyl": "^2.0.3",
+    "@types/node": "^12.7.4",
+    "@types/mocha": "^5.2.7"
+  },
   "peerDependencies": {},
-  "componentRootFolder": "components/bundlers/vue",
   "license": "SEE LICENSE IN LICENSE",
   "bit": {
-    "env": {},
+    "env": {
+      "compiler": {
+        "bit.envs/compilers/typescript@3.1.31": {
+          "rawConfig": {
+            "compilerPath": "typescript/bin/tsc",
+            "compilerArguments": [
+              "-d"
+            ],
+            "compiledFileTypes": [
+              ".ts",
+              ".tsx"
+            ],
+            "configFileName": "tsconfig.json",
+            "tsconfig": {
+              "compilerOptions": {
+                "outDir": "dist",
+                "target": "ES5",
+                "sourceMap": false,
+                "moduleResolution": "Node",
+                "esModuleInterop": true,
+                "module": "CommonJS",
+                "allowSyntheticDefaultImports": true,
+                "resolveJsonModule": true,
+                "declaration": true,
+                "experimentalDecorators": true,
+                "inlineSourceMap": false,
+                "inlineSources": false,
+                "jsx": "react",
+                "rootDir": "./",
+                "removeComments": true,
+                "typeRoots": [
+                  "./node_modules/@types"
+                ],
+                "importHelpers": false,
+                "skipLibCheck": true
+              },
+              "include": [
+                "./**/*"
+              ],
+              "exclude": [
+                "node_modules",
+                ".dependencies",
+                "dist"
+              ]
+            },
+            "development": false,
+            "copyPolicy": {
+              "ignorePatterns": [
+                "package.json",
+                "package-lock.json",
+                "tsconfig.json"
+              ],
+              "disable": false
+            },
+            "useExperimentalCache": false
+          },
+          "options": {}
+        }
+      }
+    },
+    "overrides": {
+      "devDependencies": {
+        "@types/node": "+",
+        "@types/mocha": "^5.2.7"
+      }
+    },
     "componentsDefaultDirectory": "components/{name}",
     "packageManager": "npm"
   }

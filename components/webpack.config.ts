@@ -6,9 +6,21 @@ import getFilesList from './getFilesList';
 
 // Import so it will be added as a dependency on Bit.
 import presetEnv from '@babel/preset-env';
+import  '@babel/core';
 import Vinyl from 'vinyl';
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import presetVueJsx from '@vue/babel-preset-jsx';
+import babelLoader from 'babel-loader';
+import cssLoader from 'css-loader';
+import lessLoader from 'less-loader';
+import sassLoader from 'sass-loader';
+import tsLoader from 'ts-loader';
+import ts from 'typescript';
+import vue from 'vue';
+import vueLoader from 'vue-loader';
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
+import vueStyleLoader from 'vue-style-loader';
+import vueTemplateCompiler from 'vue-template-compiler';
+
 
 type LibraryTarget = 'umd';
 
