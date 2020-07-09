@@ -4,3 +4,5 @@ dist/
 /.awcache
 /.vscode
 *.code-workspace
+.bit/
+.history/
