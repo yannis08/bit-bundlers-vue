@@ -10,6 +10,8 @@ import  '@babel/core';
 import Vinyl from 'vinyl';
 import presetVueJsx from '@vue/babel-preset-jsx';
 import babelLoader from 'babel-loader';
+import svgLoader from 'svg-inline-loader';
+import fileLoader from 'file-loader';
 import cssLoader from 'css-loader';
 import lessLoader from 'less-loader';
 import sassLoader from 'sass-loader';
@@ -28,6 +30,7 @@ const modulesPath = path.normalize(`${__dirname}${path.sep}..${path.sep}node_mod
 
 const getConfig = (files: Vinyl[], distPath: string) => {
   return {
+    mode: 'production',
     entry: getFilesList(files),
     context: `${__dirname}${path.sep}..`,
     resolve: {
@@ -53,12 +56,24 @@ const getConfig = (files: Vinyl[], distPath: string) => {
         // this will apply to both plain `.js` files
         // AND `<script>` blocks in `.vue` files
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           loader: 'babel-loader',
           options: {
             babelrc: false,
             presets: [presetEnv, presetVueJsx]
           }
+        },
+        {
+          test: /\.svg$/,
+          loader: 'svg-inline-loader'
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
         },
         {
           test: /\.tsx?$/,
