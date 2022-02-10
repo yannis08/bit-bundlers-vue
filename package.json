@@ -17,7 +17,7 @@
     "less": "^3.11.3",
     "less-loader": "^5.0.0",
     "memory-fs": "0.4.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "sass-loader": "^6.0.7",
     "ts-loader": "6.2.0",
     "typescript": "3.6.3",
